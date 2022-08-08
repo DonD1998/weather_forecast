@@ -1,8 +1,13 @@
 # print('hello, world!')
-def func(a, b):
-    c = a+b
-    return c
+# def func(a, b):
+#     c = a+b
+#     return c
+#
+# d = func(5, 5)
+#
+# print(d)
 
-d = func(5, 5)
+import os
 
-print(d)
+outpath = os.path.join("E:/", "pythons1/hello", "/dd")
+print(outpath)

@@ -1,8 +1,15 @@
 # -*- coding: utf-8 -*-
-
+"""
+author: DonD
+Location: beijing
+breaf: weather forecast
+"""
 import requests
 import bs4
+import os
 
+# 路径准备
+output_path = os.path.abspath('weather.txt')
 url = "https://weather.cma.cn/web/weather/54511"
 
 def get_web(url):
@@ -11,7 +18,6 @@ def get_web(url):
     # print(res.encoding)
     content = res.text.encode('utf-8')
     return content
-
 
 def parse_content(content):
     s = bs4.BeautifulSoup(content, 'lxml')
@@ -127,7 +133,7 @@ def parse_content(content):
     temp_int = int(temp3)
 
     if temp_int >= 24:
-        att1 = "适宜短袖👚"
+        att1 = "适宜短袖"
 
     # 雨伞模块
     str1 = '晴'
@@ -149,33 +155,29 @@ def parse_content(content):
 
     # 湿度模块
     if hui3 < 30:
-        att4 = '傍晚湿度很低💧'
+        att4 = '傍晚湿度很低'
     else:
-        att4 = '今天湿度高💧'
+        att4 = '今天湿度高'
 
-    # 转化为字符串模块
-    f1 = '日期' + ':' + date + '\n'
-    f2 = '天气' + ':' + weather3 + '\n'
-    f3 = '气温' + ":" + temp5 + '\n'
-    f4 = '风向' + ':' + wind1 + wind2 + '\n'
-    f5 = '湿度' + ':' + hui_final_final + '\n'
-    f6 = '注意' + ':' + att1 + ';' + '\n'
-    f7 = '\t' + '   ' + '  ' + att2 + ';' + '\n'
-    f8 = '\t' + '   ' + '  ' + att3 + ';' + '\n'
-    f9 = '\t' + '   ' + '  ' + att4 + ';' + '\n'
+    # 转化为字符串模块,改进成列表
+    list_attr = []
+    list_attr.append('-----Weather Forocast-------' + '\n')
+    list_attr.append('日期' + ':' + date + '\n')
+    list_attr.append('天气' + ':' + weather3 + '\n')
+    list_attr.append('气温' + ":" + temp5 + '\n')
+    list_attr.append('风向' + ':' + wind1 + wind2 + '\n')
+    list_attr.append('湿度' + ':' + hui_final_final + '\n')
+    list_attr.append('-----------------------' + '\n' )
+    list_attr.append(att1 + ';' + '\n')
+    list_attr.append(att2 + ';' + '\n')
+    list_attr.append(att3 + ';' + '\n')
+    list_attr.append(att4 + ';' + '\n')
 
     # 输出
-    with open('weather.txt', mode='w', encoding='utf-8') as file:
-        file.write('—WeatherForecast—\n')
-        file.write(f1)
-        file.write(f2)
-        file.write(f3)
-        file.write(f4)
-        file.write(f5)
-        file.write(f6)
-        file.write(f7)
-        file.write(f8)
-        file.write(f9)
+    with open(output_path, mode='w', encoding='utf-8') as f:
+        for item in list_attr:
+            f.write(item)
+
 
 # test
 if __name__ == "__main__":
