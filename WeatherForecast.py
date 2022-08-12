@@ -161,17 +161,17 @@ def parse_content(content):
 
     # 转化为字符串模块,改进成列表
     list_attr = []
-    list_attr.append('-----Weather Forocast-------' + '\n')
-    list_attr.append('日期' + ':' + date + '\n')
-    list_attr.append('天气' + ':' + weather3 + '\n')
-    list_attr.append('气温' + ":" + temp5 + '\n')
-    list_attr.append('风向' + ':' + wind1 + wind2 + '\n')
-    list_attr.append('湿度' + ':' + hui_final_final + '\n')
-    list_attr.append('-----------------------' + '\n' )
-    list_attr.append(att1 + ';' + '\n')
-    list_attr.append(att2 + ';' + '\n')
-    list_attr.append(att3 + ';' + '\n')
-    list_attr.append(att4 + ';' + '\n')
+    list_attr.append('----Weather Forocast----\n')
+    list_attr.append('日期:{}\n'.format(date))
+    list_attr.append('天气:%s\n' %(weather3))
+    list_attr.append(f'气温:{temp5}\n')
+    list_attr.append(f'风向:{wind1}{wind2}\n')
+    list_attr.append(f'湿度：{hui_final_final}\n')
+    list_attr.append('-----------------------\n' )
+    list_attr.append(f'{att1};\n')
+    list_attr.append(f'{att2};\n')
+    list_attr.append(f'{att3};\n')
+    list_attr.append(f'{att4};\n')
 
     # 输出
     with open(output_path, mode='w', encoding='utf-8') as f:
