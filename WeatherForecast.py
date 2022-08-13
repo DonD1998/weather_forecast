@@ -126,7 +126,7 @@ def parse_content(content):
     hui_final_min = min(hui_final)
     hui_final_min_str = str(hui_final_min)
     hui_final_max_str = str(hui_final_max)
-    hui_final_final = hui_final_max_str + '%' + '-' + hui_final_min_str + '%'
+    hui_final_final = f'{hui_final_max_str}%-{hui_final_min_str}%'
 
     # 注意模块生成
     # 穿衣模块
