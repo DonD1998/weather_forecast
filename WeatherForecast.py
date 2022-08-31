@@ -134,6 +134,8 @@ def parse_content(content):
 
     if temp_int >= 24:
         att1 = "适宜短袖"
+    else:
+        att1 = "适宜长袖"
 
     # 雨伞模块
     str1 = '晴'
@@ -161,7 +163,7 @@ def parse_content(content):
 
     # 转化为字符串模块,改进成列表
     list_attr = []
-    list_attr.append('----Weather Forocast----\n')
+    list_attr.append('Weather Forocast'.center(20,'*'))
     list_attr.append('日期:{}\n'.format(date))
     list_attr.append('天气:%s\n' %(weather3))
     list_attr.append(f'气温:{temp5}\n')
